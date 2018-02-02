@@ -1,8 +1,8 @@
 all: crypta
 
-.PHONY: all clean distclean release
+.PHONY: all clean distclean dist
 
-crypta: ipfs-has-been-built server/bindata.go $(shell find -type f -name '*.go')
+crypta: .make/gx server/bindata.go $(shell find -type f -name '*.go')
 	go build
 
 server/bindata.go: $(shell go env GOPATH)/bin/go-bindata web/dist
@@ -17,20 +17,23 @@ web/node_modules: web/package.json
 $(shell go env GOPATH)/bin/go-bindata:
 	go get github.com/jteeuwen/go-bindata/...
 
-ipfs-has-been-built:
-	cd $(shell go env GOPATH)/src/github.com/ipfs/go-ipfs && GOPATH=$(shell go env GOPATH) make build
-	touch ipfs-has-been-built
+$(shell go env GOPATH)/bin/gx:
+	go get -u github.com/whyrusleeping/gx
+
+.make/gx: $(shell go env GOPATH)/bin/gx
+	$(shell go env GOPATH)/bin/gx install
+	mkdir -p .make && touch .make/gx
 
 clean:
 	rm -fr web/dist/
-	rm -f server/bindata.go
-	rm -f crypta
+	rm server/bindata.go
+	rm crypta
 
 distclean: clean
 	rm -fr web/node_modules/
-	rm -f ipfs-has-been-built
+	rm -r .make/
 
-dist: ipfs-has-been-built server/bindata.go $(shell find -type f -name '*.go')
+dist: .make/gx server/bindata.go $(shell find -type f -name '*.go')
 	mkdir -p release-${VERSION}
 	GOOS=linux GOARCH=amd64 go build -ldflags='-s -w' -o dist-${VERSION}/crypta-${VERSION}
 	GOOS=windows GOARCH=amd64 go build -ldflags='-s -w' -o dist-${VERSION}/crypta-${VERSION}.exe

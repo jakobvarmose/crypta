@@ -5,7 +5,8 @@ import (
 	"net"
 	"net/http"
 
-	"github.com/ipfs/go-ipfs/core"
+	"gx/ipfs/QmViBzgruNUoLNBnXcx8YWbDNwV8MNGEGKkLo6JGetygdw/go-ipfs/core"
+
 	"github.com/jakobvarmose/crypta/transaction"
 	"github.com/jakobvarmose/crypta/userstore"
 	"github.com/skratchdot/open-golang/open"

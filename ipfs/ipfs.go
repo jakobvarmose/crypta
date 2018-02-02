@@ -6,9 +6,10 @@ import (
 
 	logging "gx/ipfs/QmSpJByNKFX1sCsHBEp3R73FL4NF6FnQTEGyNAXHm2GS52/go-log"
 
-	"github.com/ipfs/go-ipfs/core"
-	repoconfig "github.com/ipfs/go-ipfs/repo/config"
-	"github.com/ipfs/go-ipfs/repo/fsrepo"
+	"gx/ipfs/QmViBzgruNUoLNBnXcx8YWbDNwV8MNGEGKkLo6JGetygdw/go-ipfs/core"
+	repoconfig "gx/ipfs/QmViBzgruNUoLNBnXcx8YWbDNwV8MNGEGKkLo6JGetygdw/go-ipfs/repo/config"
+	"gx/ipfs/QmViBzgruNUoLNBnXcx8YWbDNwV8MNGEGKkLo6JGetygdw/go-ipfs/repo/fsrepo"
+
 	homedir "github.com/mitchellh/go-homedir"
 )
 

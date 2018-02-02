@@ -1,5 +1,6 @@
 bindata.go
-ipfs-has-been-built
+crypta
 web/dist/
 web/node_modules/
+.make/
 

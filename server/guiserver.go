@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"path"
 
-	"github.com/ipfs/go-ipfs/core"
-	"github.com/ipfs/go-ipfs/core/coreunix"
+	"gx/ipfs/QmViBzgruNUoLNBnXcx8YWbDNwV8MNGEGKkLo6JGetygdw/go-ipfs/core"
+	"gx/ipfs/QmViBzgruNUoLNBnXcx8YWbDNwV8MNGEGKkLo6JGetygdw/go-ipfs/core/coreunix"
 )
 
 func NewGuiServer(n *core.IpfsNode) (http.Handler, error) {
