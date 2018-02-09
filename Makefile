@@ -26,14 +26,13 @@ $(shell go env GOPATH)/bin/gx:
 
 clean:
 	rm -fr web/dist/
-	rm server/bindata.go
-	rm crypta
+	rm -f server/bindata.go
+	rm -f crypta
 
 distclean: clean
 	rm -fr web/node_modules/
 	rm -r .make/
 
 dist: .make/gx server/bindata.go $(shell find -type f -name '*.go')
-	mkdir -p release-${VERSION}
-	GOOS=linux GOARCH=amd64 go build -ldflags='-s -w' -o dist-${VERSION}/crypta-${VERSION}
-	GOOS=windows GOARCH=amd64 go build -ldflags='-s -w' -o dist-${VERSION}/crypta-${VERSION}.exe
+	GOOS=linux GOARCH=amd64 go build -ldflags='-s -w' -o dist/crypta-${VERSION}
+	GOOS=windows GOARCH=amd64 go build -ldflags='-s -w' -o dist/crypta-${VERSION}.exe
