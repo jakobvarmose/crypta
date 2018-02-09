@@ -31,6 +31,7 @@ export default new VueRouter({
        {path: 'user/login', component: require('./components/user/UserLogin')},
        {path: 'user/create', component: require('./components/user/UserCreate')},
        {path: 'user/settings', component: require('./components/user/UserSettings')},
+       {path: 'user/notifications', component: require('./components/user/UserNotifications')},
        {path: 'user/:address', component: require('./components/user/UserUser')},
        {path: 'post/:creatorAddress-:wallAddress-:postHash', component: require('./components/user/UserPost')},
 

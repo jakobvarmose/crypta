@@ -20,6 +20,9 @@
       <router-link v-if="myAddress" :to="'/user/'+myAddress" style="color:inherit;">
         <q-btn flat><q-icon name="person" /> My Page</q-btn>
       </router-link>
+      <!--<router-link to="/user/notifications" style="color:inherit;">
+        <q-btn flat><q-icon name="notifications" /></q-btn>
+      </router-link>-->
       <router-link v-if="myAddress" to="/user/settings" style="color:inherit;">
         <q-btn flat><q-icon name="settings" /> Settings</q-btn>
       </router-link>

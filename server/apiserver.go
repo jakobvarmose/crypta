@@ -52,6 +52,33 @@ func securityCheck(handler http.Handler) http.Handler {
 	})
 }
 
+func convert(val interface{}) interface{} {
+	switch val := val.(type) {
+	case map[interface{}]interface{}:
+		res := make(map[string]interface{}, len(val))
+		for k := range val {
+			if k, ok := k.(string); ok {
+				res[k] = convert(val[k])
+			}
+		}
+		return res
+	case map[string]interface{}:
+		res := make(map[string]interface{}, len(val))
+		for k := range val {
+			res[k] = convert(val[k])
+		}
+		return res
+	case []interface{}:
+		res := make([]interface{}, len(val))
+		for i := range val {
+			res[i] = convert(val[i])
+		}
+		return res
+	default:
+		return val
+	}
+}
+
 func returner3(
 	callback func(args *pathing.Object) (interface{}, error),
 ) func(resp http.ResponseWriter, req *http.Request) {
@@ -69,7 +96,7 @@ func returner3(
 		}
 		resp.Header().Set("Content-Type", "application/json")
 		enc := json.NewEncoder(resp)
-		enc.Encode(val)
+		enc.Encode(convert(val))
 	}
 }
 
@@ -149,6 +176,17 @@ func NewApiServer(n *core.IpfsNode, us *userstore.Userstore, db transaction.Data
 				}
 			}()
 			return true, nil
+		},
+		"v0/notifications": func(args *pathing.Object) (interface{}, error) {
+			myAddr := args.Get("myAddress").String()
+			user, err := us.GetUser(myAddr)
+			if err != nil {
+				return nil, err
+			}
+			res := map[interface{}]interface{}{
+				"notifications": user.Get("notifications").Value(),
+			}
+			return res, nil
 		},
 		"v0/page": func(args *pathing.Object) (interface{}, error) {
 			addr := args.Get("address").String()
