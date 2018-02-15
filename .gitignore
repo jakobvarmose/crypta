@@ -1,6 +1,6 @@
-bindata.go
-crypta
-web/dist/
-web/node_modules/
-.make/
-
+/server/bindata.go
+/crypta
+/web/dist/
+/web/node_modules/
+/.make/
+/dist/

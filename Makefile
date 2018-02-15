@@ -35,4 +35,4 @@ distclean: clean
 
 dist: .make/gx server/bindata.go $(shell find -type f -name '*.go')
 	GOOS=linux GOARCH=amd64 go build -ldflags='-s -w' -o dist/crypta-${VERSION}
-	GOOS=windows GOARCH=amd64 go build -ldflags='-s -w' -o dist/crypta-${VERSION}.exe
+	GOOS=windows GOARCH=amd64 go build -ldflags='-s -w' -o dist/Crypta_x64_${VERSION}.exe

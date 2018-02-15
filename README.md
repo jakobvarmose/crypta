@@ -12,6 +12,8 @@ First you need to install [Go](https://golang.org/) and [Node.js](https://nodejs
 
 ### Building and Running
 
+The first command will give a lot of 'unrecognized import path' warnings, but they can just be ignored as the missing dependencies will be fetched later.
+
 ```
 go get -u -d github.com/jakobvarmose/crypta
 cd $(go env GOPATH)/src/github.com/jakobvarmose/crypta
@@ -33,7 +35,7 @@ go build && ./crypta --dev
 ...and the GUI in another:
 
 ```
-cd $(go env GOPATH)/src/github.com/jakobvarmose/crypta/web/cryptaio
+cd $(go env GOPATH)/src/github.com/jakobvarmose/crypta/web
 npm run dev
 ```
 
