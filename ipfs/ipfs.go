@@ -4,11 +4,11 @@ import (
 	"context"
 	"os"
 
-	logging "gx/ipfs/QmSpJByNKFX1sCsHBEp3R73FL4NF6FnQTEGyNAXHm2GS52/go-log"
+	logging "github.com/ipfs/go-log"
 
-	"gx/ipfs/QmViBzgruNUoLNBnXcx8YWbDNwV8MNGEGKkLo6JGetygdw/go-ipfs/core"
-	repoconfig "gx/ipfs/QmViBzgruNUoLNBnXcx8YWbDNwV8MNGEGKkLo6JGetygdw/go-ipfs/repo/config"
-	"gx/ipfs/QmViBzgruNUoLNBnXcx8YWbDNwV8MNGEGKkLo6JGetygdw/go-ipfs/repo/fsrepo"
+	"github.com/ipfs/go-ipfs/core"
+	repoconfig "github.com/ipfs/go-ipfs/repo/config"
+	"github.com/ipfs/go-ipfs/repo/fsrepo"
 
 	homedir "github.com/mitchellh/go-homedir"
 )
@@ -31,9 +31,8 @@ func NewNode(repoPath string, offline bool) (*core.IpfsNode, error) {
 		return nil, err
 	}
 	ncfg := &core.BuildCfg{
-		Repo:      repo,
-		Permament: true,
-		Online:    !offline,
+		Repo:   repo,
+		Online: !offline,
 		ExtraOpts: map[string]bool{
 			"pubsub": false,
 			"ipnsps": false,

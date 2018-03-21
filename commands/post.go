@@ -7,7 +7,7 @@ import (
 	"sync"
 	"time"
 
-	cid "gx/ipfs/QmNp85zy9RLrQ5oQD4hPyS39ezrrXpcaa7R4Y9kxdWQLLQ/go-cid"
+	cid "github.com/ipfs/go-cid"
 
 	"github.com/jakobvarmose/crypta/pathing"
 	"github.com/jakobvarmose/crypta/transaction"

@@ -8,9 +8,9 @@ import (
 	"net/http"
 	"net/url"
 
-	cid "gx/ipfs/QmNp85zy9RLrQ5oQD4hPyS39ezrrXpcaa7R4Y9kxdWQLLQ/go-cid"
+	cid "github.com/ipfs/go-cid"
 
-	"gx/ipfs/QmViBzgruNUoLNBnXcx8YWbDNwV8MNGEGKkLo6JGetygdw/go-ipfs/core"
+	"github.com/ipfs/go-ipfs/core"
 
 	"github.com/jakobvarmose/crypta/commands"
 	"github.com/jakobvarmose/crypta/pathing"

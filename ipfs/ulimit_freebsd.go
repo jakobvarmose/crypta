@@ -7,7 +7,7 @@ package ipfs
 import (
 	"fmt"
 
-	unix "gx/ipfs/QmPXvegq26x982cQjSfbTvSzZXn7GiaMwhhVPHkeTEhrPT/sys/unix"
+	unix "golang.org/x/sys/unix"
 )
 
 func init() {

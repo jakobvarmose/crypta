@@ -1,0 +1,411 @@
+[submodule "vendor/github.com/ipfs/go-ipfs"]
+	path = vendor/github.com/ipfs/go-ipfs
+	url = https://github.com/jakobvarmose/go-ipfs
+[submodule "vendor/github.com/ipfs/go-cid"]
+	path = vendor/github.com/ipfs/go-cid
+	url = https://github.com/ipfs/go-cid
+[submodule "vendor/github.com/multiformats/go-multibase"]
+	path = vendor/github.com/multiformats/go-multibase
+	url = https://github.com/multiformats/go-multibase
+[submodule "vendor/github.com/mr-tron/base58"]
+	path = vendor/github.com/mr-tron/base58
+	url = https://github.com/mr-tron/base58
+[submodule "vendor/github.com/whyrusleeping/base32"]
+	path = vendor/github.com/whyrusleeping/base32
+	url = https://github.com/whyrusleeping/base32
+[submodule "vendor/github.com/multiformats/go-multihash"]
+	path = vendor/github.com/multiformats/go-multihash
+	url = https://github.com/multiformats/go-multihash
+[submodule "vendor/github.com/gxed/hashland"]
+	path = vendor/github.com/gxed/hashland
+	url = https://github.com/gxed/hashland
+[submodule "vendor/github.com/minio/blake2b-simd"]
+	path = vendor/github.com/minio/blake2b-simd
+	url = https://github.com/minio/blake2b-simd
+[submodule "vendor/github.com/minio/sha256-simd"]
+	path = vendor/github.com/minio/sha256-simd
+	url = https://github.com/minio/sha256-simd
+[submodule "vendor/github.com/spaolacci/murmur3"]
+	path = vendor/github.com/spaolacci/murmur3
+	url = https://github.com/spaolacci/murmur3
+[submodule "vendor/golang.org/x/crypto"]
+	path = vendor/golang.org/x/crypto
+	url = https://go.googlesource.com/crypto
+[submodule "vendor/github.com/ipfs/go-ipld-cbor"]
+	path = vendor/github.com/ipfs/go-ipld-cbor
+	url = https://github.com/ipfs/go-ipld-cbor
+[submodule "vendor/github.com/ipfs/go-block-format"]
+	path = vendor/github.com/ipfs/go-block-format
+	url = https://github.com/ipfs/go-block-format
+[submodule "vendor/github.com/ipfs/go-ipfs-util"]
+	path = vendor/github.com/ipfs/go-ipfs-util
+	url = https://github.com/ipfs/go-ipfs-util
+[submodule "vendor/github.com/ipfs/go-ipld-format"]
+	path = vendor/github.com/ipfs/go-ipld-format
+	url = https://github.com/ipfs/go-ipld-format
+[submodule "vendor/github.com/whyrusleeping/cbor"]
+	path = vendor/github.com/whyrusleeping/cbor
+	url = https://github.com/whyrusleeping/cbor
+[submodule "vendor/github.com/jessevdk/go-flags"]
+	path = vendor/github.com/jessevdk/go-flags
+	url = https://github.com/jessevdk/go-flags
+[submodule "vendor/github.com/libp2p/go-libp2p-crypto"]
+	path = vendor/github.com/libp2p/go-libp2p-crypto
+	url = https://github.com/libp2p/go-libp2p-crypto
+[submodule "vendor/github.com/agl/ed25519"]
+	path = vendor/github.com/agl/ed25519
+	url = https://github.com/agl/ed25519
+[submodule "vendor/github.com/btcsuite/btcd"]
+	path = vendor/github.com/btcsuite/btcd
+	url = https://github.com/btcsuite/btcd
+[submodule "vendor/github.com/gogo/protobuf"]
+	path = vendor/github.com/gogo/protobuf
+	url = https://github.com/gogo/protobuf
+[submodule "vendor/github.com/libp2p/go-libp2p-peer"]
+	path = vendor/github.com/libp2p/go-libp2p-peer
+	url = https://github.com/libp2p/go-libp2p-peer
+[submodule "vendor/github.com/ipfs/go-log"]
+	path = vendor/github.com/ipfs/go-log
+	url = https://github.com/ipfs/go-log
+[submodule "vendor/github.com/mattn/go-colorable"]
+	path = vendor/github.com/mattn/go-colorable
+	url = https://github.com/mattn/go-colorable
+[submodule "vendor/github.com/mattn/go-isatty"]
+	path = vendor/github.com/mattn/go-isatty
+	url = https://github.com/mattn/go-isatty
+[submodule "vendor/github.com/opentracing/opentracing-go"]
+	path = vendor/github.com/opentracing/opentracing-go
+	url = https://github.com/opentracing/opentracing-go
+[submodule "vendor/golang.org/x/net"]
+	path = vendor/golang.org/x/net
+	url = https://go.googlesource.com/net
+[submodule "vendor/github.com/whyrusleeping/go-logging"]
+	path = vendor/github.com/whyrusleeping/go-logging
+	url = https://github.com/whyrusleeping/go-logging
+[submodule "vendor/github.com/multiformats/go-multicodec-packed"]
+	path = vendor/github.com/multiformats/go-multicodec-packed
+	url = https://github.com/multiformats/go-multicodec-packed
+[submodule "vendor/github.com/ugorji/go"]
+	path = vendor/github.com/ugorji/go
+	url = https://github.com/ugorji/go
+[submodule "vendor/github.com/mitchellh/go-homedir"]
+	path = vendor/github.com/mitchellh/go-homedir
+	url = https://github.com/mitchellh/go-homedir
+[submodule "vendor/golang.org/x/sys"]
+	path = vendor/golang.org/x/sys
+	url = https://go.googlesource.com/sys
+[submodule "vendor/github.com/skratchdot/open-golang"]
+	path = vendor/github.com/skratchdot/open-golang
+	url = https://github.com/skratchdot/open-golang
+[submodule "vendor/github.com/ipfs/go-datastore"]
+	path = vendor/github.com/ipfs/go-datastore
+	url = https://github.com/ipfs/go-datastore
+[submodule "vendor/github.com/jbenet/goprocess"]
+	path = vendor/github.com/jbenet/goprocess
+	url = https://github.com/jbenet/goprocess
+[submodule "vendor/github.com/satori/go.uuid"]
+	path = vendor/github.com/satori/go.uuid
+	url = https://github.com/satori/go.uuid
+[submodule "vendor/github.com/ipfs/go-ipfs-blockstore"]
+	path = vendor/github.com/ipfs/go-ipfs-blockstore
+	url = https://github.com/ipfs/go-ipfs-blockstore
+[submodule "vendor/github.com/gxed/bbloom"]
+	path = vendor/github.com/gxed/bbloom
+	url = https://github.com/gxed/bbloom
+[submodule "vendor/github.com/hashicorp/golang-lru"]
+	path = vendor/github.com/hashicorp/golang-lru
+	url = https://github.com/hashicorp/golang-lru
+[submodule "vendor/github.com/ipfs/go-ipfs-ds-help"]
+	path = vendor/github.com/ipfs/go-ipfs-ds-help
+	url = https://github.com/ipfs/go-ipfs-ds-help
+[submodule "vendor/github.com/ipfs/go-metrics-interface"]
+	path = vendor/github.com/ipfs/go-metrics-interface
+	url = https://github.com/ipfs/go-metrics-interface
+[submodule "vendor/github.com/ipfs/go-ipfs-routing"]
+	path = vendor/github.com/ipfs/go-ipfs-routing
+	url = https://github.com/ipfs/go-ipfs-routing
+[submodule "vendor/github.com/libp2p/go-libp2p-host"]
+	path = vendor/github.com/libp2p/go-libp2p-host
+	url = https://github.com/libp2p/go-libp2p-host
+[submodule "vendor/github.com/coreos/go-semver"]
+	path = vendor/github.com/coreos/go-semver
+	url = https://github.com/coreos/go-semver
+[submodule "vendor/github.com/libp2p/go-libp2p-interface-connmgr"]
+	path = vendor/github.com/libp2p/go-libp2p-interface-connmgr
+	url = https://github.com/libp2p/go-libp2p-interface-connmgr
+[submodule "vendor/github.com/libp2p/go-libp2p-net"]
+	path = vendor/github.com/libp2p/go-libp2p-net
+	url = https://github.com/libp2p/go-libp2p-net
+[submodule "vendor/github.com/libp2p/go-libp2p-interface-conn"]
+	path = vendor/github.com/libp2p/go-libp2p-interface-conn
+	url = https://github.com/libp2p/go-libp2p-interface-conn
+[submodule "vendor/github.com/libp2p/go-libp2p-transport"]
+	path = vendor/github.com/libp2p/go-libp2p-transport
+	url = https://github.com/libp2p/go-libp2p-transport
+[submodule "vendor/github.com/multiformats/go-multiaddr"]
+	path = vendor/github.com/multiformats/go-multiaddr
+	url = https://github.com/multiformats/go-multiaddr
+[submodule "vendor/github.com/multiformats/go-multiaddr-net"]
+	path = vendor/github.com/multiformats/go-multiaddr-net
+	url = https://github.com/multiformats/go-multiaddr-net
+[submodule "vendor/github.com/whyrusleeping/mafmt"]
+	path = vendor/github.com/whyrusleeping/mafmt
+	url = https://github.com/whyrusleeping/mafmt
+[submodule "vendor/github.com/libp2p/go-maddr-filter"]
+	path = vendor/github.com/libp2p/go-maddr-filter
+	url = https://github.com/libp2p/go-maddr-filter
+[submodule "vendor/github.com/libp2p/go-libp2p-peerstore"]
+	path = vendor/github.com/libp2p/go-libp2p-peerstore
+	url = https://github.com/libp2p/go-libp2p-peerstore
+[submodule "vendor/github.com/libp2p/go-libp2p-protocol"]
+	path = vendor/github.com/libp2p/go-libp2p-protocol
+	url = https://github.com/libp2p/go-libp2p-protocol
+[submodule "vendor/github.com/libp2p/go-stream-muxer"]
+	path = vendor/github.com/libp2p/go-stream-muxer
+	url = https://github.com/libp2p/go-stream-muxer
+[submodule "vendor/github.com/multiformats/go-multistream"]
+	path = vendor/github.com/multiformats/go-multistream
+	url = https://github.com/multiformats/go-multistream
+[submodule "vendor/github.com/libp2p/go-libp2p-routing"]
+	path = vendor/github.com/libp2p/go-libp2p-routing
+	url = https://github.com/libp2p/go-libp2p-routing
+[submodule "vendor/github.com/libp2p/go-libp2p-record"]
+	path = vendor/github.com/libp2p/go-libp2p-record
+	url = https://github.com/libp2p/go-libp2p-record
+[submodule "vendor/github.com/ipfs/go-ipfs-delay"]
+	path = vendor/github.com/ipfs/go-ipfs-delay
+	url = https://github.com/ipfs/go-ipfs-delay
+[submodule "vendor/github.com/ipfs/go-ipfs-flags"]
+	path = vendor/github.com/ipfs/go-ipfs-flags
+	url = https://github.com/ipfs/go-ipfs-flags
+[submodule "vendor/github.com/ipfs/go-ipfs-pq"]
+	path = vendor/github.com/ipfs/go-ipfs-pq
+	url = https://github.com/ipfs/go-ipfs-pq
+[submodule "vendor/github.com/gxed/pubsub"]
+	path = vendor/github.com/gxed/pubsub
+	url = https://github.com/gxed/pubsub
+[submodule "vendor/github.com/libp2p/go-testutil"]
+	path = vendor/github.com/libp2p/go-testutil
+	url = https://github.com/libp2p/go-testutil
+[submodule "vendor/github.com/libp2p/go-libp2p"]
+	path = vendor/github.com/libp2p/go-libp2p
+	url = https://github.com/libp2p/go-libp2p
+[submodule "vendor/github.com/libp2p/go-libp2p-netutil"]
+	path = vendor/github.com/libp2p/go-libp2p-netutil
+	url = https://github.com/libp2p/go-libp2p-netutil
+[submodule "vendor/github.com/libp2p/go-libp2p-swarm"]
+	path = vendor/github.com/libp2p/go-libp2p-swarm
+	url = https://github.com/libp2p/go-libp2p-swarm
+[submodule "vendor/github.com/libp2p/go-addr-util"]
+	path = vendor/github.com/libp2p/go-addr-util
+	url = https://github.com/libp2p/go-addr-util
+[submodule "vendor/github.com/libp2p/go-ws-transport"]
+	path = vendor/github.com/libp2p/go-ws-transport
+	url = https://github.com/libp2p/go-ws-transport
+[submodule "vendor/github.com/gorilla/websocket"]
+	path = vendor/github.com/gorilla/websocket
+	url = https://github.com/gorilla/websocket
+[submodule "vendor/github.com/libp2p/go-libp2p-conn"]
+	path = vendor/github.com/libp2p/go-libp2p-conn
+	url = https://github.com/libp2p/go-libp2p-conn
+[submodule "vendor/github.com/jbenet/go-temp-err-catcher"]
+	path = vendor/github.com/jbenet/go-temp-err-catcher
+	url = https://github.com/jbenet/go-temp-err-catcher
+[submodule "vendor/github.com/libp2p/go-libp2p-interface-pnet"]
+	path = vendor/github.com/libp2p/go-libp2p-interface-pnet
+	url = https://github.com/libp2p/go-libp2p-interface-pnet
+[submodule "vendor/github.com/libp2p/go-libp2p-loggables"]
+	path = vendor/github.com/libp2p/go-libp2p-loggables
+	url = https://github.com/libp2p/go-libp2p-loggables
+[submodule "vendor/github.com/libp2p/go-libp2p-secio"]
+	path = vendor/github.com/libp2p/go-libp2p-secio
+	url = https://github.com/libp2p/go-libp2p-secio
+[submodule "vendor/github.com/libp2p/go-msgio"]
+	path = vendor/github.com/libp2p/go-msgio
+	url = https://github.com/libp2p/go-msgio
+[submodule "vendor/github.com/libp2p/go-libp2p-metrics"]
+	path = vendor/github.com/libp2p/go-libp2p-metrics
+	url = https://github.com/libp2p/go-libp2p-metrics
+[submodule "vendor/github.com/libp2p/go-flow-metrics"]
+	path = vendor/github.com/libp2p/go-flow-metrics
+	url = https://github.com/libp2p/go-flow-metrics
+[submodule "vendor/github.com/libp2p/go-peerstream"]
+	path = vendor/github.com/libp2p/go-peerstream
+	url = https://github.com/libp2p/go-peerstream
+[submodule "vendor/github.com/libp2p/go-tcp-transport"]
+	path = vendor/github.com/libp2p/go-tcp-transport
+	url = https://github.com/libp2p/go-tcp-transport
+[submodule "vendor/github.com/libp2p/go-reuseport"]
+	path = vendor/github.com/libp2p/go-reuseport
+	url = https://github.com/libp2p/go-reuseport
+[submodule "vendor/github.com/gxed/eventfd"]
+	path = vendor/github.com/gxed/eventfd
+	url = https://github.com/gxed/eventfd
+[submodule "vendor/github.com/gxed/GoEndian"]
+	path = vendor/github.com/gxed/GoEndian
+	url = https://github.com/gxed/GoEndian
+[submodule "vendor/github.com/libp2p/go-sockaddr"]
+	path = vendor/github.com/libp2p/go-sockaddr
+	url = https://github.com/libp2p/go-sockaddr
+[submodule "vendor/github.com/whyrusleeping/go-smux-multistream"]
+	path = vendor/github.com/whyrusleeping/go-smux-multistream
+	url = https://github.com/whyrusleeping/go-smux-multistream
+[submodule "vendor/github.com/whyrusleeping/go-smux-spdystream"]
+	path = vendor/github.com/whyrusleeping/go-smux-spdystream
+	url = https://github.com/whyrusleeping/go-smux-spdystream
+[submodule "vendor/github.com/docker/spdystream"]
+	path = vendor/github.com/docker/spdystream
+	url = https://github.com/docker/spdystream
+[submodule "vendor/github.com/whyrusleeping/go-smux-yamux"]
+	path = vendor/github.com/whyrusleeping/go-smux-yamux
+	url = https://github.com/whyrusleeping/go-smux-yamux
+[submodule "vendor/github.com/whyrusleeping/yamux"]
+	path = vendor/github.com/whyrusleeping/yamux
+	url = https://github.com/whyrusleeping/yamux
+[submodule "vendor/github.com/whyrusleeping/multiaddr-filter"]
+	path = vendor/github.com/whyrusleeping/multiaddr-filter
+	url = https://github.com/whyrusleeping/multiaddr-filter
+[submodule "vendor/github.com/libp2p/go-libp2p-circuit"]
+	path = vendor/github.com/libp2p/go-libp2p-circuit
+	url = https://github.com/libp2p/go-libp2p-circuit
+[submodule "vendor/github.com/libp2p/go-libp2p-nat"]
+	path = vendor/github.com/libp2p/go-libp2p-nat
+	url = https://github.com/libp2p/go-libp2p-nat
+[submodule "vendor/github.com/fd/go-nat"]
+	path = vendor/github.com/fd/go-nat
+	url = https://github.com/fd/go-nat
+[submodule "vendor/github.com/huin/goupnp"]
+	path = vendor/github.com/huin/goupnp
+	url = https://github.com/huin/goupnp
+[submodule "vendor/golang.org/x/text"]
+	path = vendor/golang.org/x/text
+	url = https://go.googlesource.com/text
+[submodule "vendor/github.com/jackpal/gateway"]
+	path = vendor/github.com/jackpal/gateway
+	url = https://github.com/jackpal/gateway
+[submodule "vendor/github.com/jackpal/go-nat-pmp"]
+	path = vendor/github.com/jackpal/go-nat-pmp
+	url = https://github.com/jackpal/go-nat-pmp
+[submodule "vendor/github.com/whyrusleeping/go-notifier"]
+	path = vendor/github.com/whyrusleeping/go-notifier
+	url = https://github.com/whyrusleeping/go-notifier
+[submodule "vendor/github.com/multiformats/go-multiaddr-dns"]
+	path = vendor/github.com/multiformats/go-multiaddr-dns
+	url = https://github.com/multiformats/go-multiaddr-dns
+[submodule "vendor/github.com/cenkalti/backoff"]
+	path = vendor/github.com/cenkalti/backoff
+	url = https://github.com/cenkalti/backoff
+[submodule "vendor/github.com/golang/protobuf"]
+	path = vendor/github.com/golang/protobuf
+	url = https://github.com/golang/protobuf
+[submodule "vendor/github.com/ipfs/go-ipfs-posinfo"]
+	path = vendor/github.com/ipfs/go-ipfs-posinfo
+	url = https://github.com/ipfs/go-ipfs-posinfo
+[submodule "vendor/bazil.org/fuse"]
+	path = vendor/bazil.org/fuse
+	url = https://github.com/bazil/fuse
+[submodule "vendor/github.com/ipfs/go-ipfs-chunker"]
+	path = vendor/github.com/ipfs/go-ipfs-chunker
+	url = https://github.com/ipfs/go-ipfs-chunker
+[submodule "vendor/github.com/whyrusleeping/chunker"]
+	path = vendor/github.com/whyrusleeping/chunker
+	url = https://github.com/whyrusleeping/chunker
+[submodule "vendor/github.com/ipfs/go-ipfs-cmdkit"]
+	path = vendor/github.com/ipfs/go-ipfs-cmdkit
+	url = https://github.com/ipfs/go-ipfs-cmdkit
+[submodule "vendor/github.com/bren2010/proquint"]
+	path = vendor/github.com/bren2010/proquint
+	url = https://github.com/bren2010/proquint
+[submodule "vendor/github.com/jbenet/go-is-domain"]
+	path = vendor/github.com/jbenet/go-is-domain
+	url = https://github.com/jbenet/go-is-domain
+[submodule "vendor/github.com/libp2p/go-floodsub"]
+	path = vendor/github.com/libp2p/go-floodsub
+	url = https://github.com/libp2p/go-floodsub
+[submodule "vendor/github.com/whyrusleeping/timecache"]
+	path = vendor/github.com/whyrusleeping/timecache
+	url = https://github.com/whyrusleeping/timecache
+[submodule "vendor/github.com/ipfs/go-ipfs-addr"]
+	path = vendor/github.com/ipfs/go-ipfs-addr
+	url = https://github.com/ipfs/go-ipfs-addr
+[submodule "vendor/github.com/libp2p/go-libp2p-connmgr"]
+	path = vendor/github.com/libp2p/go-libp2p-connmgr
+	url = https://github.com/libp2p/go-libp2p-connmgr
+[submodule "vendor/github.com/libp2p/go-libp2p-kad-dht"]
+	path = vendor/github.com/libp2p/go-libp2p-kad-dht
+	url = https://github.com/libp2p/go-libp2p-kad-dht
+[submodule "vendor/github.com/ipfs/go-todocounter"]
+	path = vendor/github.com/ipfs/go-todocounter
+	url = https://github.com/ipfs/go-todocounter
+[submodule "vendor/github.com/jbenet/go-context"]
+	path = vendor/github.com/jbenet/go-context
+	url = https://github.com/jbenet/go-context
+[submodule "vendor/github.com/libp2p/go-libp2p-kbucket"]
+	path = vendor/github.com/libp2p/go-libp2p-kbucket
+	url = https://github.com/libp2p/go-libp2p-kbucket
+[submodule "vendor/github.com/whyrusleeping/go-keyspace"]
+	path = vendor/github.com/whyrusleeping/go-keyspace
+	url = https://github.com/whyrusleeping/go-keyspace
+[submodule "vendor/github.com/libp2p/go-libp2p-pnet"]
+	path = vendor/github.com/libp2p/go-libp2p-pnet
+	url = https://github.com/libp2p/go-libp2p-pnet
+[submodule "vendor/github.com/davidlazar/go-crypto"]
+	path = vendor/github.com/davidlazar/go-crypto
+	url = https://github.com/davidlazar/go-crypto
+[submodule "vendor/github.com/multiformats/go-multicodec"]
+	path = vendor/github.com/multiformats/go-multicodec
+	url = https://github.com/multiformats/go-multicodec
+[submodule "vendor/github.com/whyrusleeping/mdns"]
+	path = vendor/github.com/whyrusleeping/mdns
+	url = https://github.com/whyrusleeping/mdns
+[submodule "vendor/github.com/miekg/dns"]
+	path = vendor/github.com/miekg/dns
+	url = https://github.com/miekg/dns
+[submodule "vendor/github.com/whyrusleeping/go-smux-multiplex"]
+	path = vendor/github.com/whyrusleeping/go-smux-multiplex
+	url = https://github.com/whyrusleeping/go-smux-multiplex
+[submodule "vendor/github.com/whyrusleeping/go-multiplex"]
+	path = vendor/github.com/whyrusleeping/go-multiplex
+	url = https://github.com/whyrusleeping/go-multiplex
+[submodule "vendor/github.com/whyrusleeping/retry-datastore"]
+	path = vendor/github.com/whyrusleeping/retry-datastore
+	url = https://github.com/whyrusleeping/retry-datastore
+[submodule "vendor/github.com/dustin/go-humanize"]
+	path = vendor/github.com/dustin/go-humanize
+	url = https://github.com/dustin/go-humanize
+[submodule "vendor/github.com/ipfs/go-ds-badger"]
+	path = vendor/github.com/ipfs/go-ds-badger
+	url = https://github.com/ipfs/go-ds-badger
+[submodule "vendor/github.com/dgraph-io/badger"]
+	path = vendor/github.com/dgraph-io/badger
+	url = https://github.com/dgraph-io/badger
+[submodule "vendor/github.com/pkg/errors"]
+	path = vendor/github.com/pkg/errors
+	url = https://github.com/pkg/errors
+[submodule "vendor/github.com/AndreasBriese/bbloom"]
+	path = vendor/github.com/AndreasBriese/bbloom
+	url = https://github.com/AndreasBriese/bbloom
+[submodule "vendor/github.com/dgryski/go-farm"]
+	path = vendor/github.com/dgryski/go-farm
+	url = https://github.com/dgryski/go-farm
+[submodule "vendor/github.com/ipfs/go-ds-flatfs"]
+	path = vendor/github.com/ipfs/go-ds-flatfs
+	url = https://github.com/ipfs/go-ds-flatfs
+[submodule "vendor/github.com/ipfs/go-ds-leveldb"]
+	path = vendor/github.com/ipfs/go-ds-leveldb
+	url = https://github.com/ipfs/go-ds-leveldb
+[submodule "vendor/github.com/syndtr/goleveldb"]
+	path = vendor/github.com/syndtr/goleveldb
+	url = https://github.com/syndtr/goleveldb
+[submodule "vendor/github.com/golang/snappy"]
+	path = vendor/github.com/golang/snappy
+	url = https://github.com/golang/snappy
+[submodule "vendor/github.com/ipfs/go-ds-measure"]
+	path = vendor/github.com/ipfs/go-ds-measure
+	url = https://github.com/ipfs/go-ds-measure
+[submodule "vendor/go4.org"]
+	path = vendor/go4.org
+	url = https://github.com/camlistore/go4
+[submodule "vendor/github.com/facebookgo/atomicfile"]
+	path = vendor/github.com/facebookgo/atomicfile
+	url = https://github.com/facebookgo/atomicfile
