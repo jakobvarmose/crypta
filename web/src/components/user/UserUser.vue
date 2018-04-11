@@ -16,7 +16,7 @@
     <div v-if="canPost">
       <div style="display: flex; flex-direction: row; width: 100%;">
         <div v-for="file, i in postFiles" style="position: relative; margin: 5px;">
-          <img v-if="file.type==='image'" :src="'/ipfs/'+file.hash" style="width: 100%;">
+          <img :src="'/ipfs/'+file.hash" style="width: 100%;">
           <q-btn flat style="position: absolute; top: 0px; left: 0px; color: white;" @click="removeFile(i)">
             <q-icon name="delete" /> {{$t('Remove')}}
           </q-btn>
@@ -24,7 +24,7 @@
       </div>
       <q-input type="textarea" :min-rows="4" v-model="postText" :float-label="$t('Say something...')"/>
       <q-btn color="primary" :disable="!postText&&!postFiles.length" @click="doPost">{{$t('Post')}}</q-btn>
-      <!--<c-upload-btn @file="doUpload">{{$t('Add pictures')}}</c-upload-btn>-->
+      <c-upload-btn @file="doUpload">{{$t('Add pictures/videos')}}</c-upload-btn>
     </div>
     <c-post v-for="post in posts" :key="`${post.hash}`" :post="post" />
   </div>
@@ -81,7 +81,7 @@
         const obj = await this.$api('v0/page/post', {
           address: this.address,
           text: this.postText,
-          media: this.postFiles,
+          attachments: this.postFiles,
         })
         if (obj) {
           this.postText = '';
@@ -110,7 +110,7 @@
         })
         const obj = await res.json();
         this.postFiles.push({
-          type: 'image',
+          t: obj.t,
           hash: obj.hash,
         });
       },

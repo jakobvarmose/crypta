@@ -30,7 +30,7 @@ func SetWriters(db transaction.Database, pageAddress string, writers []string) e
 	return si.Commit(pageAddress)
 }
 
-func CreateTextPost(db transaction.Database, pageAddress, creatorAddress string, text string) (interface{}, error) {
+func CreatePost(db transaction.Database, pageAddress, creatorAddress string, text string, attachments *pathing.Object) (interface{}, error) {
 	si, err := transaction.NewSigner(context.TODO(), db, creatorAddress)
 	if err != nil {
 		return nil, err
@@ -38,12 +38,32 @@ func CreateTextPost(db transaction.Database, pageAddress, creatorAddress string,
 	genesis := transaction.New(context.TODO(), db, "")
 	now := time.Now().UTC().Format(time.RFC3339)
 
-	err = genesis.Root().Set(map[string]interface{}{
-		"t":       "POST",
-		"page":    pageAddress,
-		"creator": creatorAddress,
-		"text":    text,
-		"time":    now,
+	attachmentsData := make([]interface{}, 0)
+	attachments2 := make([]interface{}, 0)
+	attachments.EachSimple(func(_ *pathing.Object, attachment *pathing.Object) error {
+		c, err := cid.Decode(attachment.Get("hash").String())
+		if err != nil {
+			fmt.Println(err)
+			return nil
+		}
+		attachmentsData = append(attachmentsData, map[interface{}]interface{}{
+			"t":    attachment.Get("t").String(),
+			"link": c,
+		})
+		attachments2 = append(attachments2, map[string]interface{}{
+			"t":    attachment.Get("t").String(),
+			"hash": attachment.Get("hash").String(),
+		})
+		return nil
+	})
+
+	err = genesis.Root().Set(map[interface{}]interface{}{
+		"t":           "POST",
+		"page":        pageAddress,
+		"creator":     creatorAddress,
+		"text":        text,
+		"time":        now,
+		"attachments": attachmentsData,
 	})
 	if err != nil {
 		return nil, err
@@ -69,8 +89,9 @@ func CreateTextPost(db transaction.Database, pageAddress, creatorAddress string,
 				"address": creatorAddress,
 				"name":    si.Root().Get("info").Get("name").String(),
 			},
-			"text": text,
-			"time": now,
+			"text":        text,
+			"time":        now,
+			"attachments": attachments2,
 		},
 		"hash": genesis.Hash(),
 	}, nil
@@ -224,11 +245,20 @@ func PostList(us *userstore.Userstore, db transaction.Database, addr, user strin
 						if commentHash.String() != genesisHash.String() {
 							return nil
 						}
+						attachments := make([]interface{}, 0)
+						val2.Get("attachments").EachSimple(func(_ *transaction.Object, attachment *transaction.Object) error {
+							attachments = append(attachments, map[string]interface{}{
+								"t":    attachment.Get("t").String(),
+								"hash": attachment.Get("link").Cid().String(),
+							})
+							return nil
+						})
 						genesis := map[string]interface{}{
-							"hash":    genesisHash.String(),
-							"text":    val2.Get("text").String(),
-							"time":    val2.Get("time").String(),
-							"creator": creatorObj,
+							"hash":        genesisHash.String(),
+							"text":        val2.Get("text").String(),
+							"time":        val2.Get("time").String(),
+							"creator":     creatorObj,
+							"attachments": attachments,
 						}
 						mu.Lock()
 						defer mu.Unlock()

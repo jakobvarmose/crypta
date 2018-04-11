@@ -30,6 +30,12 @@
       </span>
     </q-card-title>
     <q-card-main>
+      <div style="display: flex; flex-direction: row; width: 100%;">
+        <div v-for="attachment, i in post.genesis.attachments" style="position: relative; margin: 5px;">
+          <img v-if="attachment.t=='IMAGE'" :src="'/ipfs/'+attachment.hash" style="width: 100%;" />
+          <video v-if="attachment.t=='VIDEO'" :src="'/ipfs/'+attachment.hash" style="width: 100%;" controls />
+        </div>
+      </div>
       <span style="white-space: pre-wrap; word-wrap: break-word; overflow-wrap: break-word;">{{post.genesis.text}}</span>
     </q-card-main>
     <q-card-separator />
@@ -52,6 +58,7 @@
     QCardMain,
     QCardSeparator,
     QCardTitle,
+    QGallery,
     QIcon,
     QInput,
     QItem,
@@ -77,6 +84,7 @@
       QCardMain,
       QCardSeparator,
       QCardTitle,
+      QGallery,
       QIcon,
       QInput,
       QItem,
@@ -97,6 +105,13 @@
         commentDisabled: false,
       };
     },
+    computed: {
+      attachments() {
+        return this.post.genesis.attachments.map(attachment => {
+          return '/ipfs/'+attachment.hash;
+        })
+      },
+    },
     async created() {
       this.refresh();
     },
@@ -107,7 +122,7 @@
         // TODO implement fetching of post data
       },
       async deletePost() {
-        
+
       },
       async createComment() {
         if (!this.commentDisabled && this.commentText) {

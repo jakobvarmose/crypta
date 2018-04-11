@@ -140,7 +140,7 @@ func (o *Object) Set(value interface{}) error {
 		if err != nil {
 			return err
 		}
-		ins = *c
+		ins = c
 	} else {
 		ins = value
 	}
@@ -303,12 +303,12 @@ func (o *Object) getValue() interface{} {
 			value = payload[index]
 		}
 	}
-	if value, ok := value.(cid.Cid); ok {
+	if value, ok := value.(*cid.Cid); ok {
 		item, err := o.tx.db.Get(value.String())
 		if err != nil {
 			return nil
 		}
-		o.cid = &value
+		o.cid = value
 		o.cache = item
 		return item
 	}

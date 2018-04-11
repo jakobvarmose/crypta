@@ -1,12 +1,14 @@
 package server
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
 	"net/url"
+	"strings"
 
 	cid "github.com/ipfs/go-cid"
 
@@ -239,7 +241,8 @@ func NewApiServer(n *core.IpfsNode, us *userstore.Userstore, db transaction.Data
 			addr := args.Get("address").String()
 			myAddr := args.Get("myAddress").String()
 			text := args.Get("text").String()
-			result, err := commands.CreateTextPost(db, addr, myAddr, text)
+			attachments := args.Get("attachments")
+			result, err := commands.CreatePost(db, addr, myAddr, text, attachments)
 			if err != nil {
 				return nil, err
 			}
@@ -266,7 +269,13 @@ func NewApiServer(n *core.IpfsNode, us *userstore.Userstore, db transaction.Data
 		app.Handle("/api/"+key, securityCheck(http.HandlerFunc(returner3(val))))
 	}
 	app.Handle("/api/v0/upload", securityCheck(http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
-		hash, err := db.Put(io.Reader(req.Body))
+		header := make([]byte, 512)
+		m, err := io.ReadFull(req.Body, header)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+		hash, err := db.Put(io.MultiReader(bytes.NewReader(header[:m]), req.Body))
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
@@ -276,9 +285,20 @@ func NewApiServer(n *core.IpfsNode, us *userstore.Userstore, db transaction.Data
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
+		mime := http.DetectContentType(header[:m])
+		if strings.HasPrefix(mime, "image/") {
+			mime = "IMAGE"
+		} else if strings.HasPrefix(mime, "video/") {
+			mime = "VIDEO"
+		} else {
+			http.Error(w, "Unknown filetype", http.StatusInternalServerError)
+			return
+		}
 		w.Header().Set("Content-Type", "application/json")
 		enc := json.NewEncoder(w)
+
 		enc.Encode(map[string]interface{}{
+			"t":    mime,
 			"hash": c.String(),
 		})
 	})))

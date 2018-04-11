@@ -5,7 +5,6 @@ import (
 
 	cid "github.com/ipfs/go-cid"
 
-	multibase "github.com/multiformats/go-multibase"
 	"github.com/ugorji/go/codec"
 )
 
@@ -23,11 +22,7 @@ func (extLink) ConvertExt(v interface{}) interface{} {
 	default:
 		panic("cannot happen")
 	}
-	buf, err := c.StringOfBase(multibase.Identity)
-	if err != nil {
-		panic(err)
-	}
-	return []byte(buf)
+	return c.Bytes()
 }
 
 func (extLink) UpdateExt(dst interface{}, src interface{}) {
