@@ -10,6 +10,7 @@ import (
 	cid "github.com/ipfs/go-cid"
 	ipldcbor "github.com/ipfs/go-ipld-cbor"
 	format "github.com/ipfs/go-ipld-format"
+	floodsub "github.com/libp2p/go-floodsub"
 	ci "github.com/libp2p/go-libp2p-crypto"
 	peer "github.com/libp2p/go-libp2p-peer"
 	mh "github.com/multiformats/go-multihash"
@@ -146,4 +147,12 @@ func (db *database) KeyGen() (string, error) {
 // KeyList returns all the generated keys.
 func (db *database) KeyList() ([]string, error) {
 	return db.node.Repo.Keystore().List()
+}
+
+func (db *database) SubscribeTo(topic string) (*floodsub.Subscription, error) {
+	return db.node.Floodsub.Subscribe(topic)
+}
+
+func (db *database) PublishTo(topic string, data []byte) error {
+	return db.node.Floodsub.Publish(topic, data)
 }

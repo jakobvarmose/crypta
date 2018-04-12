@@ -34,8 +34,8 @@ func NewNode(repoPath string, offline bool) (*core.IpfsNode, error) {
 		Repo:   repo,
 		Online: !offline,
 		ExtraOpts: map[string]bool{
-			"pubsub": false,
-			"ipnsps": false,
+			"pubsub": true,
+			"ipnsps": true,
 			"mplex":  false,
 		},
 		Routing: core.DHTOption,
