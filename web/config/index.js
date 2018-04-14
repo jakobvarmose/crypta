@@ -46,7 +46,8 @@ module.exports = {
     // https://github.com/chimurai/http-proxy-middleware
     proxyTable: {
       '/api/': {
-        target: 'http://localhost:8701'
+        target: 'http://localhost:8701',
+        ws: true
       },
       '/ipfs/': {
         target: 'http://localhost:8701'

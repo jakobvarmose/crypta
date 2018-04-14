@@ -23,6 +23,10 @@ func securityHeaders(handler http.Handler) http.Handler {
 
 func New(n *core.IpfsNode, us *userstore.Userstore, db transaction.Database) (http.Handler, error) {
 	app := http.NewServeMux()
+	ws, err := NewWsServer(us, db)
+	if err != nil {
+		return nil, err
+	}
 	api, err := NewApiServer(n, us, db)
 	if err != nil {
 		return nil, err
@@ -31,6 +35,7 @@ func New(n *core.IpfsNode, us *userstore.Userstore, db transaction.Database) (ht
 	if err != nil {
 		return nil, err
 	}
+	app.Handle("/api/ws", securityHeaders(ws))
 	app.Handle("/api/", securityHeaders(api))
 	app.Handle("/", securityHeaders(gui))
 	return app, nil

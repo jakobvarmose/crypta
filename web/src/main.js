@@ -21,6 +21,7 @@ import moment from 'moment'
 import router from './router'
 import i18next from 'i18next';
 import translations from './translations';
+import RpcSocket from './RpcSocket';
 
 Vue.config.productionTip = false
 Vue.use(Quasar) // Install Quasar Framework
@@ -31,18 +32,17 @@ i18next.init({
   resources: translations,
 });
 
+const ws = new WebSocket((location.protocol==='http:'?'ws://':'wss://')+location.host+'/api/ws');
+const rpc = new RpcSocket(ws);
+rpc.on('error', e => {
+  new Vue().$alert('websocket error');
+});
+
 Vue.mixin({
   methods: {
     async $api(name, args) {
       args.myAddress = localStorage.getItem('myAddress');
-      const res = await fetch('/api/'+name, {
-        method: 'POST',
-        body: JSON.stringify(args),
-      });
-      if (!res.ok) {
-        throw new Error(await res.text());
-      }
-      return res.json();
+      return rpc.call(name, args);
     },
     $t() {
       return i18next.t.apply(i18next, arguments)
