@@ -11,9 +11,9 @@ import (
 	"net/url"
 	"strings"
 
-	cid "github.com/ipfs/go-cid"
+	cid "github.com/ipsn/go-ipfs/gxlibs/github.com/ipfs/go-cid"
 
-	"github.com/ipfs/go-ipfs/core"
+	"github.com/ipsn/go-ipfs/core"
 
 	"github.com/jakobvarmose/crypta/commands"
 	"github.com/jakobvarmose/crypta/pathing"

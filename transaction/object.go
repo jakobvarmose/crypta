@@ -3,7 +3,7 @@ package transaction
 import (
 	"errors"
 
-	cid "github.com/ipfs/go-cid"
+	cid "github.com/ipsn/go-ipfs/gxlibs/github.com/ipfs/go-cid"
 
 	"github.com/jakobvarmose/crypta/pathing"
 )

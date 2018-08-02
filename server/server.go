@@ -5,7 +5,7 @@ import (
 	"net"
 	"net/http"
 
-	"github.com/ipfs/go-ipfs/core"
+	"github.com/ipsn/go-ipfs/core"
 
 	"github.com/jakobvarmose/crypta/transaction"
 	"github.com/jakobvarmose/crypta/userstore"

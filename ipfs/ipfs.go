@@ -4,11 +4,11 @@ import (
 	"context"
 	"os"
 
-	logging "github.com/ipfs/go-log"
+	logging "github.com/ipsn/go-ipfs/gxlibs/github.com/ipfs/go-log"
 
-	"github.com/ipfs/go-ipfs/core"
-	repoconfig "github.com/ipfs/go-ipfs/repo/config"
-	"github.com/ipfs/go-ipfs/repo/fsrepo"
+	"github.com/ipsn/go-ipfs/core"
+	repoconfig "github.com/ipsn/go-ipfs/repo/config"
+	"github.com/ipsn/go-ipfs/repo/fsrepo"
 
 	homedir "github.com/mitchellh/go-homedir"
 )

@@ -3,7 +3,7 @@ package pathing
 import (
 	"reflect"
 
-	cid "github.com/ipfs/go-cid"
+	cid "github.com/ipsn/go-ipfs/gxlibs/github.com/ipfs/go-cid"
 
 	"github.com/ugorji/go/codec"
 )
