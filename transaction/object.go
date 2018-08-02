@@ -224,6 +224,8 @@ func (o *Object) Bytes() []byte {
 
 func (o *Object) Int() int {
 	switch value := o.getValue().(type) {
+	case float64:
+		return int(value)
 	case uint64:
 		return int(value)
 	case int64:
@@ -235,6 +237,8 @@ func (o *Object) Int() int {
 
 func (o *Object) Uint64() uint64 {
 	switch value := o.getValue().(type) {
+	case float64:
+		return uint64(value)
 	case uint64:
 		return value
 	case int64:
@@ -246,6 +250,8 @@ func (o *Object) Uint64() uint64 {
 
 func (o *Object) Int64() int64 {
 	switch value := o.getValue().(type) {
+	case float64:
+		return int64(value)
 	case uint64:
 		return int64(value)
 	case int64:
