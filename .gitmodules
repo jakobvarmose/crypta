@@ -165,7 +165,7 @@
 	url = https://github.com/facebookgo/atomicfile
 [submodule "vendor/github.com/ipsn/go-ipfs"]
 	path = vendor/github.com/ipsn/go-ipfs
-	url = https://github.com/ipsn/go-ipfs
+	url = https://github.com/jakobvarmose/ipsn--go-ipfs
 [submodule "vendor/github.com/hashicorp/go-multierror"]
 	path = vendor/github.com/hashicorp/go-multierror
 	url = https://github.com/hashicorp/go-multierror
