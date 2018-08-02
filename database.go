@@ -7,6 +7,7 @@ import (
 	"errors"
 	"io"
 
+	blocks "github.com/ipfs/go-block-format"
 	cid "github.com/ipfs/go-cid"
 	ipldcbor "github.com/ipfs/go-ipld-cbor"
 	format "github.com/ipfs/go-ipld-format"
@@ -34,6 +35,35 @@ func NewDatabase(us *userstore.Userstore, n *core.IpfsNode) *database {
 		us:   us,
 		node: n,
 	}
+}
+
+func (db *database) GetData(hash string) (uint64, []byte, error) {
+	c, err := cid.Decode(hash)
+	if err != nil {
+		return 0, nil, err
+	}
+	block, err := db.node.Blocks.GetBlock(context.TODO(), c)
+	if err != nil {
+		return 0, nil, err
+	}
+	return c.Type(), block.RawData(), nil
+}
+
+func (db *database) PutData(typ uint64, data []byte) (string, error) {
+	hash, err := mh.Sum(data, mh.SHA2_256, -1)
+	if err != nil {
+		return "", err
+	}
+	c := cid.NewCidV1(typ, hash)
+	b, err := blocks.NewBlockWithCid(data, c)
+	if err != nil {
+		return "", err
+	}
+	err = db.node.Blocks.AddBlock(b)
+	if err != nil {
+		return "", err
+	}
+	return c.String(), nil
 }
 
 // Get fetches an object from IPFS and decodes it.
