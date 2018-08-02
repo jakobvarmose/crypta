@@ -3,6 +3,7 @@ package server
 import (
 	"bytes"
 	"context"
+	"encoding/base64"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -76,6 +77,61 @@ func convert(val interface{}) interface{} {
 			res[i] = convert(val[i])
 		}
 		return res
+	case *cid.Cid:
+		return "\x00*" + val.String()
+	case []byte:
+		return "\x00" + base64.RawURLEncoding.EncodeToString(val)
+	case string:
+		if strings.HasPrefix(val, "\x00") {
+			return "\x00" + val
+		}
+		return val
+	default:
+		return val
+	}
+}
+
+func unconvert(val interface{}) interface{} {
+	switch val := val.(type) {
+	case map[interface{}]interface{}:
+		res := make(map[string]interface{}, len(val))
+		for k := range val {
+			if k, ok := k.(string); ok {
+				res[k] = unconvert(val[k])
+			}
+		}
+		return res
+	case map[string]interface{}:
+		res := make(map[string]interface{}, len(val))
+		for k := range val {
+			res[k] = unconvert(val[k])
+		}
+		return res
+	case []interface{}:
+		res := make([]interface{}, len(val))
+		for i := range val {
+			res[i] = unconvert(val[i])
+		}
+		return res
+	case string:
+		if strings.HasPrefix(val, "\x00") {
+			if strings.HasPrefix(val, "\x00\x00") {
+				return val[1:]
+			}
+			if strings.HasPrefix(val, "\x00*") {
+				res, err := cid.Decode(val[2:])
+				if err != nil {
+					return nil
+				}
+				return res
+			}
+			res, err := base64.RawURLEncoding.DecodeString(val[1:])
+			if err != nil {
+				return nil
+			}
+			return res
+		}
+		return val
 	default:
 		return val
 	}
@@ -91,7 +147,7 @@ func returner3(
 			http.Error(resp, err.Error(), http.StatusBadRequest)
 			return
 		}
-		val, err := callback(pathing.NewObject(args))
+		val, err := callback(pathing.NewObject(unconvert(args)))
 		if err != nil {
 			http.Error(resp, err.Error(), http.StatusInternalServerError)
 			return
@@ -104,6 +160,40 @@ func returner3(
 
 func NewApiServer(n *core.IpfsNode, us *userstore.Userstore, db transaction.Database) (http.Handler, error) {
 	apis := map[string]func(args *pathing.Object) (interface{}, error){
+		"v0/name/resolve": func(args *pathing.Object) (interface{}, error) {
+			hash, err := db.Resolve(args.Get("address").String())
+			if err != nil {
+				return nil, err
+			}
+			if hash[:6] == "/ipfs/" {
+				hash = hash[6:]
+			}
+			return map[string]interface{}{
+				"hash": hash,
+			}, nil
+		},
+		"v0/block/get": func(args *pathing.Object) (interface{}, error) {
+			typ, data, err := db.GetData(args.Get("hash").String())
+			if err != nil {
+				return nil, err
+			}
+			return map[string]interface{}{
+				"type": typ,
+				"data": data,
+			}, nil
+		},
+		"v0/block/put": func(args *pathing.Object) (interface{}, error) {
+			typ := args.Get("type").Uint64()
+			fmt.Printf("%T\n", args.Get("type").Value())
+			data := args.Get("data").Bytes()
+			hash, err := db.PutData(typ, data)
+			if err != nil {
+				return nil, err
+			}
+			return map[string]interface{}{
+				"hash": hash,
+			}, nil
+		},
 		"v0/user/list": func(args *pathing.Object) (interface{}, error) {
 			keys, err := db.KeyList()
 			if err != nil {
