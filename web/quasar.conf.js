@@ -5,7 +5,9 @@ module.exports = function (ctx) {
     // app plugins (/src/plugins)
     plugins: [
       'i18n',
-      'axios'
+      'axios',
+      'alert',
+      'api',
     ],
     css: [
       'app.styl'
@@ -20,7 +22,7 @@ module.exports = function (ctx) {
     supportIE: true,
     build: {
       scopeHoisting: true,
-      // vueRouterMode: 'history',
+      vueRouterMode: 'history',
       // vueCompiler: true,
       // gzip: true,
       // analyze: true,
@@ -36,26 +38,46 @@ module.exports = function (ctx) {
     },
     devServer: {
       // https: true,
-      // port: 8080,
-      open: true // opens browser window automatically
+      port: 8700,
+      open: true, // opens browser window automatically
+      proxy: {
+        '/api/': {
+          target: 'http://localhost:8701'
+        },
+        '/ipfs/': {
+          target: 'http://localhost:8701'
+        },
+      },
     },
     // framework: 'all' --- includes everything; for dev only!
     framework: {
       components: [
-        'QLayout',
-        'QLayoutHeader',
-        'QLayoutDrawer',
-        'QPageContainer',
-        'QPage',
-        'QToolbar',
-        'QToolbarTitle',
         'QBtn',
+        'QCard',
+        'QCardActions',
+        'QCardMain',
+        'QCardSeparator',
+        'QCardTitle',
+        'QCheckbox',
+        'QChipsInput',
+        'QCollapsible',
+        'QField',
         'QIcon',
-        'QList',
-        'QListHeader',
+        'QInput',
         'QItem',
         'QItemMain',
-        'QItemSide'
+        'QItemSide',
+        'QLayout',
+        'QLayoutDrawer',
+        'QLayoutHeader',
+        'QList',
+        'QListHeader',
+        'QPage',
+        'QPageContainer',
+        'QPopover',
+        'QSelect',
+        'QToolbar',
+        'QToolbarTitle',
       ],
       directives: [
         'Ripple'

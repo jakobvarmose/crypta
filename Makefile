@@ -5,10 +5,10 @@ all: crypta
 crypta: server/bindata.go $(shell find -type f -name '*.go')
 	go build
 
-server/bindata.go: $(shell go env GOPATH)/bin/go-bindata web/dist
-	$(shell go env GOPATH)/bin/go-bindata -o server/bindata.go -pkg server -nometadata -prefix web/dist/ web/dist/...
+server/bindata.go: $(shell go env GOPATH)/bin/go-bindata web/dist/spa-mat
+	$(shell go env GOPATH)/bin/go-bindata -o server/bindata.go -pkg server -nometadata -prefix web/dist/spa-mat/ web/dist/spa-mat/...
 
-web/dist: web/node_modules $(shell find web/src/ -type f)
+web/dist/spa-mat: web/node_modules $(shell find web/src/ -type f)
 	cd web/ && npm run build
 
 web/node_modules: web/package.json
@@ -18,7 +18,7 @@ $(shell go env GOPATH)/bin/go-bindata:
 	go get github.com/jteeuwen/go-bindata/...
 
 clean:
-	rm -fr web/dist/
+	cd web/ && npm run clean
 	rm -f server/bindata.go
 	rm -f crypta
 

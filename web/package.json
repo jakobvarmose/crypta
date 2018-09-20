@@ -7,11 +7,16 @@
   "author": "Jakob Varmose Bentzen <jakobvarmose@users.noreply.github.com>",
   "private": true,
   "scripts": {
+    "build": "quasar build",
+    "clean": "quasar clean",
+    "dev": "quasar dev",
     "lint": "eslint --ext .js,.vue src",
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "moment": "^2.22.2",
+    "uid-safe": "^2.1.5",
     "vue-i18n": "^7.3.3"
   },
   "devDependencies": {

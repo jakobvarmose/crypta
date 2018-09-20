@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed-center text-center">
+  <q-page class="fixed-center text-center">
     <p>
       <img
         src="~assets/sad.svg"
@@ -12,7 +12,7 @@
       style="width:200px;"
       @click="$router.push('/')"
     >Go back</q-btn>
-  </div>
+  </q-page>
 </template>
 
 <script>
