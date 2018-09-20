@@ -1,14 +1,13 @@
 package commands
 
 import (
-	"context"
 	"fmt"
 
 	"github.com/jakobvarmose/crypta/transaction"
 )
 
-func SetInfo(db transaction.Database, addr, key, val string) error {
-	si, err := transaction.NewSigner(context.TODO(), db, addr)
+func SetInfo(p Provider, addr, key, val string) error {
+	si, err := transaction.NewSigner(p.CTX(), p.DB(), addr)
 	if err != nil {
 		return err
 	}
@@ -23,8 +22,8 @@ func SetInfo(db transaction.Database, addr, key, val string) error {
 	return si.Commit(addr)
 }
 
-func GetInfo(db transaction.Database, addr, key string) (string, error) {
-	si, err := transaction.NewSigner(context.TODO(), db, addr)
+func GetInfo(p Provider, addr, key string) (string, error) {
+	si, err := transaction.NewSigner(p.CTX(), p.DB(), addr)
 	if err != nil {
 		return "", err
 	}
@@ -36,8 +35,8 @@ func GetInfo(db transaction.Database, addr, key string) (string, error) {
 	return name, nil
 }
 
-func GetInfos(db transaction.Database, addr string) (map[string]string, error) {
-	si, err := transaction.NewSigner(context.TODO(), db, addr)
+func GetInfos(p Provider, addr string) (map[string]string, error) {
+	si, err := transaction.NewSigner(p.CTX(), p.DB(), addr)
 	if err != nil {
 		return nil, err
 	}

@@ -12,15 +12,6 @@ import (
 	"github.com/skratchdot/open-golang/open"
 )
 
-func securityHeaders(handler http.Handler) http.Handler {
-	return http.HandlerFunc(func(resp http.ResponseWriter, req *http.Request) {
-		fmt.Println(req.RequestURI)
-		resp.Header().Set("X-Frame-Options", "DENY")
-		resp.Header().Set("X-Content-Type-Options", "nosniff")
-		handler.ServeHTTP(resp, req)
-	})
-}
-
 func New(n *core.IpfsNode, us *userstore.Userstore, db transaction.Database) (http.Handler, error) {
 	app := http.NewServeMux()
 	api, err := NewApiServer(n, us, db)

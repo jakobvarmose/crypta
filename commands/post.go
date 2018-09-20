@@ -1,7 +1,6 @@
 package commands
 
 import (
-	"context"
 	"fmt"
 	"sort"
 	"sync"
@@ -11,11 +10,10 @@ import (
 
 	"github.com/jakobvarmose/crypta/pathing"
 	"github.com/jakobvarmose/crypta/transaction"
-	"github.com/jakobvarmose/crypta/userstore"
 )
 
-func SetWriters(db transaction.Database, pageAddress string, writers []string) error {
-	si, err := transaction.NewSigner(context.TODO(), db, pageAddress)
+func SetWriters(p Provider, pageAddress string, writers []string) error {
+	si, err := transaction.NewSigner(p.CTX(), p.DB(), pageAddress)
 	if err != nil {
 		return err
 	}
@@ -30,12 +28,12 @@ func SetWriters(db transaction.Database, pageAddress string, writers []string) e
 	return si.Commit(pageAddress)
 }
 
-func CreatePost(db transaction.Database, pageAddress, creatorAddress string, text string, attachments *pathing.Object) (interface{}, error) {
-	si, err := transaction.NewSigner(context.TODO(), db, creatorAddress)
+func CreatePost(p Provider, pageAddress, creatorAddress string, text string, attachments *pathing.Object) (interface{}, error) {
+	si, err := transaction.NewSigner(p.CTX(), p.DB(), creatorAddress)
 	if err != nil {
 		return nil, err
 	}
-	genesis := transaction.New(context.TODO(), db, "")
+	genesis := transaction.New(p.CTX(), p.DB(), "")
 	now := time.Now().UTC().Format(time.RFC3339)
 
 	attachmentsData := make([]interface{}, 0)
@@ -97,12 +95,12 @@ func CreatePost(db transaction.Database, pageAddress, creatorAddress string, tex
 	}, nil
 }
 
-func CreateTextComment(db transaction.Database, pageAddress, creatorAddress, genesisHash, text string) (interface{}, error) {
-	si, err := transaction.NewSigner(context.TODO(), db, creatorAddress)
+func CreateTextComment(p Provider, pageAddress, creatorAddress, genesisHash, text string) (interface{}, error) {
+	si, err := transaction.NewSigner(p.CTX(), p.DB(), creatorAddress)
 	if err != nil {
 		return nil, err
 	}
-	comment := transaction.New(context.TODO(), db, "")
+	comment := transaction.New(p.CTX(), p.DB(), "")
 	now := time.Now().UTC().Format(time.RFC3339)
 	comment.Root().Set(map[string]interface{}{
 		"t":       "COMMENT",
@@ -166,10 +164,10 @@ func (p commentSorter) Less(i, j int) bool {
 	return t1 < t2
 }
 
-func Home(us *userstore.Userstore, db transaction.Database, userAddr string) (map[string]interface{}, error) {
+func Home(p Provider, userAddr string) (map[string]interface{}, error) {
 	var mu sync.Mutex
 	posts := make([]map[string]interface{}, 0)
-	userData, err := us.GetUser(userAddr)
+	userData, err := p.US().GetUser(userAddr)
 	if err != nil {
 		return nil, err
 	}
@@ -180,7 +178,7 @@ func Home(us *userstore.Userstore, db transaction.Database, userAddr string) (ma
 		wg.Add(1)
 		go func(pageAddr string) {
 			defer wg.Done()
-			res, err := PostList(us, db, pageAddr, userAddr)
+			res, err := PostList(p, pageAddr, userAddr)
 			if err != nil {
 				fmt.Println(err)
 				hasErrors = true
@@ -206,8 +204,8 @@ func Home(us *userstore.Userstore, db transaction.Database, userAddr string) (ma
 	return res, nil
 }
 
-func PostList(us *userstore.Userstore, db transaction.Database, addr, user string) (map[string]interface{}, error) {
-	si, err := transaction.NewSigner(context.TODO(), db, addr)
+func PostList(p Provider, addr, user string) (map[string]interface{}, error) {
+	si, err := transaction.NewSigner(p.CTX(), p.DB(), addr)
 	if err != nil {
 		return nil, err
 	}
@@ -226,7 +224,7 @@ func PostList(us *userstore.Userstore, db transaction.Database, addr, user strin
 		writers[writerAddress.String()] = true
 		count++
 		go func(writerAddress string) {
-			si, err := transaction.NewSigner(context.TODO(), db, writerAddress)
+			si, err := transaction.NewSigner(p.CTX(), p.DB(), writerAddress)
 			if err != nil {
 				ch <- err
 				return
@@ -315,7 +313,7 @@ func PostList(us *userstore.Userstore, db transaction.Database, addr, user strin
 		posts = append(posts, post)
 	}
 	sort.Sort(postSorter(posts))
-	infos, err := GetInfos(db, addr)
+	infos, err := GetInfos(p, addr)
 	if err != nil {
 		fmt.Println(err)
 		hasErrors = true
@@ -323,12 +321,12 @@ func PostList(us *userstore.Userstore, db transaction.Database, addr, user strin
 	subscribed := false
 	theyCanPost := false
 	if user != "" {
-		obj, err := us.GetUser(user)
+		obj, err := p.US().GetUser(user)
 		if err != nil {
 			return nil, err
 		}
 		subscribed = obj.Get("subscriptions").Get(addr).Bool()
-		userSi, err := transaction.NewSigner(context.TODO(), db, user)
+		userSi, err := transaction.NewSigner(p.CTX(), p.DB(), user)
 		if err != nil {
 			return nil, err
 		}
