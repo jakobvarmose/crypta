@@ -15,6 +15,7 @@ import (
 type Options struct {
 	Offline bool `long:"offline" description:"Run in offline mode"`
 	Dev     bool `long:"dev" description:"Run in development mode"`
+	Docker  bool `long:"inside-docker" description:"Special settings for running inside docker"`
 }
 
 var opts Options
@@ -50,7 +51,7 @@ func main() {
 		return
 	}
 	go func() {
-		err = server.Run(app, opts.Dev)
+		err = server.Run(app, opts.Dev, opts.Docker)
 		if err != nil {
 			fmt.Println(err)
 			return

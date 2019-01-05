@@ -27,9 +27,15 @@ func New(n *core.IpfsNode, us *userstore.Userstore, db transaction.Database) (ht
 	return app, nil
 }
 
-func Run(app http.Handler, dev bool) error {
+func Run(app http.Handler, dev, insideDocker bool) error {
 	if dev {
 		listener, err := net.Listen("tcp", "localhost:8701")
+		if err != nil {
+			return err
+		}
+		return http.Serve(listener, app)
+	} else if insideDocker {
+		listener, err := net.Listen("tcp", ":8700")
 		if err != nil {
 			return err
 		}
@@ -45,5 +51,4 @@ func Run(app http.Handler, dev bool) error {
 		}
 		return http.Serve(listener, app)
 	}
-	return nil
 }
